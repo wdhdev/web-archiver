@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- HTML Meta Tags -->
+        <title>Web Archiver</title>
+
+        <!-- Stylesheets -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+
+        <!-- Scripts -->
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+
+    <body class="p-8 max-w-md m-auto bg-zinc-900 text-white text-center">
+        <header class="mb-8">
+            <h1 class="text-3xl font-bold">Web Archiver</h1>
+        </header>
+
+        <main>
+            <form id="archive" class="mb-8" onsubmit="submitForm()">
+                <input type="password" id="password" class="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 appearance-none border-gray-600 focus:outline-none focus:ring-0 focus:border-blue-600 peer mb-6" placeholder="Password" required>
+                <input type="url" id="url" class="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 appearance-none border-gray-600 focus:outline-none focus:ring-0 focus:border-blue-600 peer mb-6" placeholder="Website URL" required>
+
+                <button type="submit" id="btn" class="bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Archive</button>
+            </form>
+
+            <div id="success" class="hidden">
+                <i class="fa-solid fa-check bg-green-600 pt-2.5 pb-2 pl-3 pr-3 rounded-full text-3xl mb-2"></i>
+                <h1 class="mb-2 text-2xl font-bold">The website has been archived.</h1>
+                <p id="success-url"></p>
+            </div>
+
+            <div id="error" class="hidden">
+                <i class="fa-solid fa-x bg-red-600 pt-2.5 pb-2 pl-4 pr-4 rounded-full text-3xl mb-2"></i>
+                <h1 id="error-message" class="mb-6 text-2xl font-bold"></h1>
+            </div>
+        </main>
+
+        <footer class="mt-8">
+            <p>&copy; 2023 <span class="font-semibold">William Harrison</span> - All Rights Reserved.</p>
+        </footer>
+    </body>
+
+    <script src="/js/form.js"></script>
+</html>
