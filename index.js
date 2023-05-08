@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
 if(!fs.existsSync(`${__dirname}/archives`)) fs.mkdirSync(`${__dirname}/archives`);
-if(!fs.existsSync(`${__dirname}/archives/data`)) fs.mkdirSync(`${__dirname}/archives/data`);
+if(!fs.existsSync(`${__dirname}/archive-data`)) fs.mkdirSync(`${__dirname}/archive-data`);
 
 // Host public files
 app.use(express.static(__dirname + "/public", {
@@ -40,7 +40,7 @@ app.post("/api/archive", async (req, res) => {
     try {
         await scrape(options);
 
-        fs.writeFile(`archives/data/${uuid}.json`, `{"timestamp":"${Date.now()}","uuid":"${uuid}","website":"${req.body.url}"}`, function (err) {
+        fs.writeFile(`archive-data/${uuid}.json`, `{"timestamp":"${Date.now()}","uuid":"${uuid}","website":"${req.body.url}"}`, function (err) {
             if(err) console.log(err);
         })
 
@@ -59,11 +59,11 @@ app.post("/api/archive", async (req, res) => {
 app.get("/api/archives", async (req, res) => {
     let data = [];
 
-    fs.readdir("archives/data", async function (err, files) {
+    fs.readdir("archive-data", async function (err, files) {
         if(err) return res.status(500);
 
         files.forEach(function (file) {
-            const fileData = require(`./archives/data/${file}`);
+            const fileData = require(`./archive-data/${file}`);
 
             data.push(fileData);
         })
