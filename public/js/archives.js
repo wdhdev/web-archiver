@@ -18,7 +18,7 @@ function loadArchives() {
             c3.classList = "px-4 py-2 outline outline-1 outline-gray-700";
 
             c1.innerText = moment.unix(archive.timestamp / 1000).format("Do MMMM YYYY, h:mm:ss a");
-            c2.innerHTML = `<a href="${archive.uuid}" class="font-semibold text-blue-600 hover:text-blue-700">${archive.uuid}</a>`;
+            c2.innerHTML = `<a href="/archive/${archive.uuid}" class="font-semibold text-blue-600 hover:text-blue-700">${archive.uuid}</a>`;
             c3.innerHTML = `<a href="${archive.website}" class="text-gray-400 underline underline-2 hover:no-underline">${archive.website}</a>`;
         })
     })
