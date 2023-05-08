@@ -16,7 +16,12 @@ app.use(express.json());
 if(!fs.existsSync(`${__dirname}/archives`)) fs.mkdirSync(`${__dirname}/archives`);
 if(!fs.existsSync(`${__dirname}/archives/data`)) fs.mkdirSync(`${__dirname}/archives/data`);
 
-app.use("/", express.static(__dirname + "/public"));
+// Host public files
+app.use(express.static(__dirname + "/public", {
+    extensions: ["html"]
+}))
+
+// Host archives
 app.use("/archive", express.static(__dirname + "/archives"));
 
 app.post("/api/archive", async (req, res) => {
@@ -49,6 +54,22 @@ app.post("/api/archive", async (req, res) => {
     } catch(err) {
         res.status(500).json({ "message": "A server error occurred.", "code": "SERVER_ERROR" });
     }
+})
+
+app.get("/api/archives", async (req, res) => {
+    let data = [];
+
+    fs.readdir("archives/data", async function (err, files) {
+        if(err) return res.status(500);
+
+        files.forEach(function (file) {
+            const fileData = require(`./archives/data/${file}`);
+
+            data.push(fileData);
+        })
+
+        res.status(200).json(data);
+    })
 })
 
 // Start
