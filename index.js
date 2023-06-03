@@ -40,15 +40,13 @@ app.post("/api/archive", async (req, res) => {
     try {
         await scrape(options);
 
-        fs.writeFile(`archive-data/${uuid}.json`, `{"timestamp":"${Date.now()}","uuid":"${uuid}","website":"${req.body.url}"}`, function (err) {
-            if(err) console.log(err);
-        })
+        fs.writeFile(`archive-data/${uuid}.json`, `{"timestamp":"${Date.now()}","uuid":"${uuid}","website":"${req.body.url}"}`);
 
         res.status(200).json({
             "message": "The website has been archived.",
             "code": "WEBSITE_ARCHIVED",
-            "website": `${req.body.url}`,
-            "uuid": `${uuid}`,
+            "website": req.body.url,
+            "uuid": uuid,
             "url": `https://web.wharchive.org/archive/${uuid}`
         })
     } catch(err) {
