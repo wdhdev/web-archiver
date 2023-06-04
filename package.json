@@ -12,7 +12,7 @@
   "bugs": {
     "url": "https://github.com/wdhdev/web-archiver/issues"
   },
-  "homepage": "https://github.com/wdhdev/web-archiver#readme",
+  "homepage": "https://web.wharchive.org",
   "dependencies": {
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
