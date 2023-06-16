@@ -3,7 +3,7 @@ Easily scrape, download and preview websites.
 
 **Backend**
 
-![Backend Languages](https://skillicons.dev/icons?i=nodejs,express)
+![Backend Languages](https://skillicons.dev/icons?i=nodejs,express,sentry)
 
 **Frontend**
 
