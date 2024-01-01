@@ -15,7 +15,7 @@
   "bugs": {
     "url": "https://github.com/wdhdev/web-archiver/issues"
   },
-  "homepage": "https://web.wharchive.org",
+  "homepage": "https://github.com/wdhdev/web-archiver#readme",
   "dependencies": {
     "@sentry/node": "^7.91.0",
     "body-parser": "^1.20.2",
